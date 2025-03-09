@@ -112,17 +112,74 @@ void ImGui_DrawInfoZone_AnimationEditor() {
 				frame.Pivot = { 0.5f,0.5f };
 				frame.Duration = 1;
 				frame.color = WHITE;
+				CurrentScene->CurrentData->Frames.clear();
 				CurrentScene->CurrentData->Frames.push_back(frame);
 				CurrentScene->UpdateSelectedFrame();
+				CurrentScene->SprCells.clear();
+				CurrentScene->SprCells.push_back(frame.Source);
 			}
 		}
 	}
 }
 
 void ImGui_DrawInfoZone_SpriteEditor() {
-	AnimFrame* frame = CurrentScene->AnimPlay.CurrentFrame;
-	if (!frame) return;
-	//ImGui::Image();
+	if (!CurrentScene || !CurrentScene->CurrentData) return;
+
+	if (ImGui::Button("Add Cell")) {
+		CurrentScene->SprCells.push_back({ 0,0,(float)CurrentScene->CurrentData->Texture.width,(float)CurrentScene->CurrentData->Texture.height });
+		CurrentScene->CellIndex++;
+	}
+	if (!CurrentScene->SprCells.size()) return;
+	ImGui::SameLine(0, 10);
+	auto cell_li = CurrentScene->SprCells.begin(); std::advance(cell_li, CurrentScene->CellIndex); Rectangle* cell = &(*cell_li);
+	if (ImGui::Button("Copy Cell")) {
+		CurrentScene->SprCells.push_back(*cell);
+		CurrentScene->CellIndex++;
+	}
+
+	ImGui::SliderInt("Cells", &CurrentScene->CellIndex, 0, CurrentScene->SprCells.size()-1);
+
+	ImGui::DragFloat("Cell X Pos", &cell->x); ImGui::DragFloat("Cell Y Pos", &cell->y);
+	ImGui::DragFloat("Cell Width", &cell->width); ImGui::DragFloat("Cell Height", &cell->height);
+
+	ImVec2 startPos = ImGui::GetCursorScreenPos();
+	ImVec2 scaledif = { abs((float)CurrentScene->CurrentData->Texture.width - 192), abs((float)CurrentScene->CurrentData->Texture.height - 192) };
+
+	ImGui::GetWindowDrawList()->AddRect({ startPos.x - 2,startPos.y - 2 }, { startPos.x + 194,startPos.y + 194 }, IM_COL32(255, 255, 255, 255), 0, 0, 2.5f);
+	rlImGuiImageSize(&CurrentScene->CurrentData->Texture, 192, 192);
+
+	ImGui::SetWindowFontScale(1.8f);
+	int index = 0;
+	for (Rectangle& rect : CurrentScene->SprCells) {
+		if (index != CurrentScene->CellIndex) {
+			ImVec2 endpoint = { (startPos.x + rect.x) + (rect.width + scaledif.x),(startPos.y + rect.y) + (rect.height + scaledif.y) };
+			ImGui::GetWindowDrawList()->AddRect(
+				{ startPos.x + rect.x,startPos.y + rect.y },
+				{ endpoint },
+				IM_COL32(0, 117, 44, 255),
+				0, 0, 2.5f
+			);
+			ImGui::GetWindowDrawList()->AddText(
+				{ (startPos.x + rect.x) + (rect.width + scaledif.x),(startPos.y + rect.y) - 14 },
+				IM_COL32(0, 117, 44, 255),
+				TextFormat("%d",index)
+			);
+		}
+		index++;
+
+	}
+	ImGui::GetWindowDrawList()->AddRect(
+		{ startPos.x + cell->x,startPos.y + cell->y },
+		{ (startPos.x + cell->x) + (cell->width + scaledif.x),(startPos.y + cell->y) + (cell->height + scaledif.y) },
+		IM_COL32(0, 228, 48, 255),
+		0, 0, 2.5f
+	);
+	ImGui::GetWindowDrawList()->AddText(
+		{ (startPos.x + cell->x) + (cell->width + scaledif.x),(startPos.y+cell->y)-14 }, 
+		IM_COL32(0, 228, 48, 255),
+		TextFormat("%d",CurrentScene->CellIndex)
+	);
+	ImGui::SetWindowFontScale(1);
 }
 
 void ImGui_DrawInfoZone() {

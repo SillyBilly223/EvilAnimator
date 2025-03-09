@@ -38,7 +38,9 @@ public:
 	SpriteInterface SprInterface;
 
 	int FrameIndex = 0;
+	int CellIndex = 0;
 	enum SceneShow ShoweCase = SINF_ANIM;
+	std::list<Rectangle> SprCells;
 
 	void UpdateSpriteHandling(Vector2 mpos, Vector2 dpos);
 

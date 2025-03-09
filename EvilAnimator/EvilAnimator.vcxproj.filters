@@ -89,10 +89,19 @@
     <ClInclude Include="Src\Utils\TinyFd\tinyfiledialogs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Utils\Rl_ImGui\extras\FA6FreeSolidFontData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Utils\Rl_ImGui\extras\IconsFontAwesome6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BugIcon.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Src\Utils\Rl_ImGui\extras\FontAwsome_LICENSE.txt" />
   </ItemGroup>
 </Project>

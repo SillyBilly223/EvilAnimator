@@ -146,6 +146,8 @@
     <ClInclude Include="Src\Animation\AnimationScene.h" />
     <ClInclude Include="Src\Animation\Data\AnimationData.h" />
     <ClInclude Include="Src\Animation\Data\Sprite.h" />
+    <ClInclude Include="Src\Utils\Rl_ImGui\extras\FA6FreeSolidFontData.h" />
+    <ClInclude Include="Src\Utils\Rl_ImGui\extras\IconsFontAwesome6.h" />
     <ClInclude Include="Src\Utils\Rl_ImGui\imconfig.h" />
     <ClInclude Include="Src\Utils\Rl_ImGui\imgui.h" />
     <ClInclude Include="Src\Utils\Rl_ImGui\imgui_impl_raylib.h" />
@@ -159,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BugIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Src\Utils\Rl_ImGui\extras\FontAwsome_LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

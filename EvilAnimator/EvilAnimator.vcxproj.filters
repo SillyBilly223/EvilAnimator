@@ -18,7 +18,7 @@
     <ClCompile Include="Src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Animation\Data\Sprite.cpp">
+    <ClCompile Include="Src\Animation\Data\Sprite.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\Animation\AnimationScene.cpp">
@@ -45,7 +45,7 @@
     <ClCompile Include="Src\Utils\TinyFd\tinyfiledialogs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Animation\Data\AnimationData.cpp">
+    <ClCompile Include="Src\Animation\Data\Animation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClInclude Include="Src\Animation\AnimationScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Animation\Data\AnimationData.h">
+    <ClInclude Include="Src\Animation\Data\Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Animation\Data\Sprite.h">
@@ -95,6 +95,9 @@
     <ClInclude Include="Src\Utils\Rl_ImGui\extras\IconsFontAwesome6.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Animation\AnimationSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\BugIcon.png">
@@ -103,5 +106,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Src\Utils\Rl_ImGui\extras\FontAwsome_LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui.ini" />
   </ItemGroup>
 </Project>

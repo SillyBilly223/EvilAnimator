@@ -131,8 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Src\Animation\AnimationScene.cpp" />
-    <ClCompile Include="Src\Animation\Data\AnimationData.cpp" />
-    <ClCompile Include="Src\Animation\Data\Sprite.cpp" />
+    <ClCompile Include="Src\Animation\Data\Animation.c" />
+    <ClCompile Include="Src\Animation\Data\Sprite.c" />
     <ClCompile Include="Src\Main.cpp" />
     <ClCompile Include="Src\Utils\Rl_ImGui\imgui.cpp" />
     <ClCompile Include="Src\Utils\Rl_ImGui\imgui_demo.cpp" />
@@ -144,7 +144,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Animation\AnimationScene.h" />
-    <ClInclude Include="Src\Animation\Data\AnimationData.h" />
+    <ClInclude Include="Src\Animation\AnimationSettings.h" />
+    <ClInclude Include="Src\Animation\Data\Animation.h" />
     <ClInclude Include="Src\Animation\Data\Sprite.h" />
     <ClInclude Include="Src\Utils\Rl_ImGui\extras\FA6FreeSolidFontData.h" />
     <ClInclude Include="Src\Utils\Rl_ImGui\extras\IconsFontAwesome6.h" />
@@ -164,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Src\Utils\Rl_ImGui\extras\FontAwsome_LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="imgui.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
